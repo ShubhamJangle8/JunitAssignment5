@@ -44,4 +44,15 @@ public class UserRegistration {
 		}
 		return "invalid";
 	}	
+	private String validateNumber(String number) {
+		String expression = "^[0-9]{2}?[ ][0-9]{4,13}";	// Pattern for Number
+		Pattern pattern = Pattern.compile(expression);
+		Matcher match = pattern.matcher(number);
+		if(match.find()) {
+			return "valid";
+		}
+		return "invalid";
+		
+	}
+
 }

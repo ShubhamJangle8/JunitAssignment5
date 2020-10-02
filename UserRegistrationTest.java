@@ -17,4 +17,10 @@ class UserRegistrationDetailsTest {
 		String actual = obj.validateLName("abc.sdfg@gmail.co.in");
 		Assert.assertEquals("valid",actual);
 	}
+	@Test
+	void Numbertest() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateNumber("91 9987646236");
+		Assert.assertEquals("valid",actual);
+	}
 }
