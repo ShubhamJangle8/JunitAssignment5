@@ -23,4 +23,11 @@ class UserRegistrationDetailsTest {
 		String actual = obj.validateNumber("91 9987646236");
 		Assert.assertEquals("valid",actual);
 	}
+	@Test
+	void Passwordtest() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validatePassword("Sdfsdgf1@");
+		Assert.assertEquals("valid",actual);
+		System.out.println(actual.equals("valid"));
+	}
 }
