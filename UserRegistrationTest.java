@@ -26,7 +26,7 @@ class UserRegistrationDetailsTest {
 	@Test
 	void Passwordtest() {
 		UserRegistrationDetails obj = new UserRegistrationDetails();
-		String actual = obj.validatePassword("Shubham@0");
+		String actual = obj.validatePassword("Shubham@012");
 		Assert.assertEquals("valid",actual);
 		System.out.println(actual.equals("valid"));
 	}
