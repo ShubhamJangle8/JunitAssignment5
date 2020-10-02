@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistration{
+public class UserRegistration {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome to User Registration Portal");
@@ -35,4 +35,13 @@ public class UserRegistration{
 		}
 		return "invalid";
 	}
+	private String validateEmail(String Email) {
+		String expression = "(abc[.][A-Za-z]+@bl[.]co[.][A-Za-z]{2,})$"; // Pattern for Email
+		Pattern pattern = Pattern.compile(expression);
+		Matcher match = pattern.matcher(Email);
+		if(match.find()) {
+			return "valid";
+		}
+		return "invalid";
+	}	
 }
