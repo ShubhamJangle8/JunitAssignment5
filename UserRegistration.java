@@ -56,14 +56,12 @@ public class UserRegistration {
 	}
 
 	private String validatePassword(String pass) {
-		String expression = "[A-Za-z0-9]{8,}";	//Pattern for Password
+		String expression = "^((?=.*[A-Z]+)([A-Za-z0-9@#$%^&*]{8,}))$";	//Pattern for Password
 		Pattern pattern = Pattern.compile(expression);
 		Matcher match = pattern.matcher(pass);
 		if(match.find()) {
 			return "valid";
 		}
 		return "invalid";
-		
-	}
 	
 }
