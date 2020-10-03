@@ -1,30 +1,47 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+
+@RunWith(Parameterized.class)
 class UserRegistrationDetailsTest {
-	@Test
-	public void givenEntry_whenAllDataValid_ReturnHappyMood() {
 	
-		UserRegistrationDetails obj = new UserRegistrationDetails();
+	private String email;
+	private String expectedValue;
 	
-		String fname = obj.validateFName("Shubham");
-		String lname = obj.validateLName("Jangale");
-		String email = obj.validateEmail("abc.xyzadff45@bl.co.in");
-		String number = obj.validateNumber("91 9987646236");
-		String password = obj.validatePassword("shurajrek@0");		
-	
-		assertTrue(fname == "valid" && lname == "valid" && email == "valid" && number == "valid" && password == "valid");
-		System.out.println("Happy Mood");
+	public UserRegistrationDetailsTest(String email, String expectedValue) {
+		
+		super();
+		this.email = email;
+		this.expectedValue = expectedValue;
 	}
-	@Test
-	public void givenEntry_whenAllDataInvalid_ReturnSadMood() {
 	
+	@Before
+	public void initialize() {
 		UserRegistrationDetails obj = new UserRegistrationDetails();
-	
-		String fname = obj.validateFName("Shubha64m");
-		String lname = obj.validateLName("Jang454ale");
-		String email = obj.validateEmail("abc.xyzadff45@bl.co.in");
-		String number = obj.validateNumber("91 9987646236");
-		String password = obj.validatePassword("shurajrek@0");		
-	
-		assertTrue(fname == "valid" || lname == "valid" || email == "valid" || number == "valid" || password == "valid");
-		System.out.println("Sad Mood");
 	}
+	
+	@Parameterized.Parameters
+	public static Collection input() {
+		return Arrays.asList(new Object[][] {{"A", "valid"}, {"A", "valid"}, {"A", "valid"}, 
+		{"A", "valid"}, {"A", "valid"}, {"A", "valid"}, {"A", "valid"}, {"A", "valid"}, 
+		{"A", "valid"}});
+	}	
+
+	@Test
+	public void givenSamples_whenExpectedIsTrue_returnTrue() {
+		
+		UserRegistrationDetails obj1 = new UserRegistrationDetails();
+		
+	    assertEquals(expectedValue, obj1.validateEmail(this.email));
+	    
+	        
+    }
 }
