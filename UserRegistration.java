@@ -12,9 +12,18 @@ public class UserRegistration {
 		String firstName = sc.nextLine();
 		System.out.println("Enter the last name");
 		String lastName = sc.nextLine();
+		System.out.println("Enter the Email Id");
+		String Email = sc.nextLine();
+		System.out.println("Enter the Phone Number");
+		String Phone = sc.nextLine();
+		System.out.println("Enter the Password");
+		String Password = sc.nextLine();
 		
 		System.out.println(firstName + " is " +user.validateFInput(firstName)); //Validating firstName
 		System.out.println(lastName + " is " +user.validateLInput(lastName)); //Validating lastName
+		System.out.println(Email + " is " +user.validateEmail(Email));	// Validating Email
+		System.out.println(Phone+ " is " +user.validateNumber(Phone));	// Validating Number
+		System.out.println(Password+ " is " +user.validatePassword(Password));
 		sc.close();
 	}
 	private String validateFInput(String fname) {
