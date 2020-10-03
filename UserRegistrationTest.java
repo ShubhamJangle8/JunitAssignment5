@@ -12,9 +12,71 @@ class UserRegistrationDetailsTest {
 		Assert.assertEquals("valid",actual);
 	}
 	@Test
-	void Emailtest() {
+	void Emailtest1() {
 		UserRegistrationDetails obj = new UserRegistrationDetails();
-		String actual = obj.validateLName("abc.sdfg@gmail.co.in");
+		String actual = obj.validateLName("abc@gmail.com");
+		Assert.assertEquals("valid",actual);
+	}
+	@Test
+	void Emailtest2() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc-100@yahoo.com");
+		Assert.assertEquals("valid",actual);
+	}
+	@Test
+	void Emailtest3() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc.100@yahoo.com");
+		Assert.assertEquals("valid",actual);
+	}
+	@Test
+	void Emailtest4() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc-100@abc.net");
+		Assert.assertEquals("valid",actual);
+	}
+	@Test
+	void Emailtest5() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc.100@abc.com.au");
+		Assert.assertEquals("valid",actual);
+	}
+	@Test
+	void Emailtest6() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc@gmail.com.com");
+		Assert.assertEquals("valid",actual);
+	}
+	@Test
+	void Emailtest7() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc@.com.my");
+		Assert.assertEquals("valid",actual);
+	}
+	@Test
+	void Emailtest8() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc123@gmail.a");
+		Assert.assertEquals("valid",actual);
+	}
+	@Test
+	void Emailtest9() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc123@.com");
+		Assert.assertEquals("valid",actual);
+	}
+	
+	@Test
+	void Emailtest10() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName(".abc@abc.com");
+		Assert.assertEquals("valid",actual);
+	}
+	
+	@Test
+	void Emailtest11() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String actual = obj.validateLName("abc()*@gmail.com");
 		Assert.assertEquals("valid",actual);
 	}
 	@Test
