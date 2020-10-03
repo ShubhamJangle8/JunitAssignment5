@@ -28,12 +28,11 @@ class UserRegistrationDetailsTest {
 		UserRegistrationDetails obj = new UserRegistrationDetails();
 	}
 	
-	@Parameterized.Parameters
 	public static Collection input() {
-		return Arrays.asList(new Object[][] {{"A", "valid"}, {"A", "valid"}, {"A", "valid"}, 
-		{"A", "valid"}, {"A", "valid"}, {"A", "valid"}, {"A", "valid"}, {"A", "valid"}, 
-		{"A", "valid"}});
-	}	
+		return Arrays.asList(new Object[][] {{"abc-100@yahoo.com", "valid"}, {"abc@yahoo.com", "valid"}, {"abc.100@yahoo.com", "valid"}, 
+		{"abc111@abc.com", "valid"}, {"abc-100@abc.net", "valid"}, {"abc.100@abc.com.au", "valid"}, {"abc@1.com", "valid"}, {"abc@gmail.com.com", "valid"}, 
+		{"abc+100@gmail.com", "valid"}});
+	}
 
 	@Test
 	public void givenSamples_whenExpectedIsTrue_returnTrue() {
