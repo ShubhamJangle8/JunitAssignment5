@@ -2,11 +2,11 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistration {
+public class UserRegistrationDetails {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome to User Registration Portal");
-		UserRegistration user = new UserRegistration();
+		UserRegistrationDetails user = new UserRegistrationDetails();
 		
 		System.out.println("Enter the first name");
 		String firstName = sc.nextLine();
@@ -27,7 +27,7 @@ public class UserRegistration {
 		sc.close();
 	}
 	private String validateFInput(String fname) {
-		String expression = "(^[A-Z]{1})[a-z]{2,}$"; // Pattern for Names
+		String expression = "^([A-Z]{1}[A-Za-z]{2,})$"; // Pattern for Names
 		Pattern pattern = Pattern.compile(expression);
 		Matcher match = pattern.matcher(fname);
 		if(match.find()) {
@@ -36,7 +36,7 @@ public class UserRegistration {
 		return "invalid";
 	}
 	private String validateLInput(String lname) {
-		String expression = "(^[A-Z]{1})[a-z]{2,}$"; // Pattern for Names
+		String expression = "^([A-Z]{1}[A-Za-z]{2,})$"; // Pattern for Names
 		Pattern pattern = Pattern.compile(expression);
 		Matcher match = pattern.matcher(lname);
 		if(match.find()) {
@@ -45,7 +45,7 @@ public class UserRegistration {
 		return "invalid";
 	}
 	private String validateEmail(String Email) {
-		String expression = "(abc[.][A-Za-z]+@bl[.]co[.][A-Za-z]{2,})$"; // Pattern for Email
+		String expression = "^[a-zA-Z0-9_]+[-+.]?[A-Za-z0-9_]+@[A-Za-z0-9]+[.][a-z]{2,}[.]?([a-z]{2,})?$"; // Pattern for Email
 		Pattern pattern = Pattern.compile(expression);
 		Matcher match = pattern.matcher(Email);
 		if(match.find()) {
@@ -54,7 +54,7 @@ public class UserRegistration {
 		return "invalid";
 	}	
 	private String validateNumber(String number) {
-		String expression = "^[0-9]{2}?[ ][0-9]{4,13}";	// Pattern for Number
+		String expression = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[$#@!%_&])[A-Za-z0-9$#@!%_&]{8,}$";	// Pattern for Number
 		Pattern pattern = Pattern.compile(expression);
 		Matcher match = pattern.matcher(number);
 		if(match.find()) {

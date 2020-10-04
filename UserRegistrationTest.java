@@ -1,46 +1,31 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.Collection;
-
-import org.junit.Assert;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-
-@RunWith(Parameterized.class)
 class UserRegistrationDetailsTest {
-	
-	private String email;
-	private String expectedValue;
-	
-	public UserRegistrationDetailsTest(String email, String expectedValue) {
-		
-		super();
-		this.email = email;
-		this.expectedValue = expectedValue;
-	}
-	
-	@Before
-	public void initialize() {
-		UserRegistrationDetails obj = new UserRegistrationDetails();
-	}
-	
-	public static Collection input() {
-		return Arrays.asList(new Object[][] {{"abc-100@yahoo.com", "valid"}, {"abc@yahoo.com", "valid"}, {"abc.100@yahoo.com", "valid"}, 
-		{"abc111@abc.com", "valid"}, {"abc-100@abc.net", "valid"}, {"abc.100@abc.com.au", "valid"}, {"abc@1.com", "valid"}, {"abc@gmail.com.com", "valid"}, 
-		{"abc+100@gmail.com", "valid"}});
-	}
-
 	@Test
-	public void givenSamples_whenExpectedIsTrue_returnTrue() {
-		
-		UserRegistrationDetails obj1 = new UserRegistrationDetails();
-		
-	    assertEquals(expectedValue, obj1.validateEmail(this.email));
-	    
-	        
-    }
+	public void givenEntry_whenAllDataValid_ReturnHappyMood() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String fname = obj.validateFName("Shubham");
+		String lname = obj.validateLName("Jangale");
+		String email = obj.validateEmail("abc.xyzadff45@bl.co.in");
+		String number = obj.validateNumber("91 9987646236");
+		String password = obj.validatePassword("shurajrek@0");		
+		assertTrue(fname == "valid" && lname == "valid" && email == "valid" && number == "valid" && password == "valid");
+		System.out.println("Happy Mood");
+	}
+	@Test
+	public void givenEntry_whenAllDataInvalid_ReturnSadMood() {
+		UserRegistrationDetails obj = new UserRegistrationDetails();
+		String fname = obj.validateFName("Shubha64m");
+		String lname = obj.validateLName("Jang454ale");
+		String email = obj.validateEmail("abc.xyzadff45@bl.co.in");
+		String number = obj.validateNumber("91 9987646236");
+		String password = obj.validatePassword("shurajrek@0");		
+		assertTrue(fname == "valid" || lname == "valid" || email == "valid" || number == "valid" || password == "valid");
+		System.out.println("Sad Mood");
+	}
 }
