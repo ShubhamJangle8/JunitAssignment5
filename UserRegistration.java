@@ -1,76 +1,33 @@
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistrationDetails {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Welcome to User Registration Portal");
-		UserRegistrationDetails user = new UserRegistrationDetails();
-		
-		System.out.println("Enter the first name");
-		String firstName = sc.nextLine();
-		System.out.println("Enter the last name");
-		String lastName = sc.nextLine();
-		System.out.println("Enter the Email Id");
-		String Email = sc.nextLine();
-		System.out.println("Enter the Phone Number");
-		String Phone = sc.nextLine();
-		System.out.println("Enter the Password");
-		String Password = sc.nextLine();
-		
-		System.out.println(firstName + " is " +user.validateFInput(firstName)); //Validating firstName
-		System.out.println(lastName + " is " +user.validateLInput(lastName)); //Validating lastName
-		System.out.println(Email + " is " +user.validateEmail(Email));	// Validating Email
-		System.out.println(Phone+ " is " +user.validateNumber(Phone));	// Validating Number
-		System.out.println(Password+ " is " +user.validatePassword(Password));
-		sc.close();
+public class UserRegistration {
+// GLOBAL CONSTANTS
+	private static String NAME_REGEX = "^([A-Z]{1}[A-Za-z]{2,})$";
+	private static String MOBILE_REGEX = "^([0-9]{1,4}[ ][0-9]{10})$";
+	private static String EMAIL_REGEX = "^[a-zA-Z0-9_]+[-+.]?[A-Za-z0-9_]+@[A-Za-z0-9]+[.][a-z]{2,}[.]?([a-z]{2,})?$";
+	private static String PASSWORD_REGEX = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[$#@!%_&])[A-Za-z0-9$#@!%_&]{8,}$";
+	//validating email
+	public String validateEmail(String email) {
+		//String emailRegex = "^[a-zA-Z0-9_]+[-+.]?[A-Za-z0-9_]+@[A-Za-z0-9]+[.][a-z]{2,}[.]?([a-z]{2,})?$";
+		if(matchingWithPattern(email, EMAIL_REGEX))
+				return "valid";
+		else
+			return "invalid";
 	}
-	private String validateFInput(String fname) {
-		String expression = "^([A-Z]{1}[A-Za-z]{2,})$"; // Pattern for Names
-		Pattern pattern = Pattern.compile(expression);
-		Matcher match = pattern.matcher(fname);
-		if(match.find()) {
-			return "valid";
+	public String validateUserEntry(String firstName, String lastName, String mobile, String email, String password) {
+		if(matchingWithPattern(firstName, NAME_REGEX) && matchingWithPattern(lastName, NAME_REGEX) && matchingWithPattern(mobile, MOBILE_REGEX)
+				&& matchingWithPattern(email, EMAIL_REGEX) && matchingWithPattern(password, PASSWORD_REGEX)) {
+			return "happy";
 		}
-		return "invalid";
+		return "sad";
 	}
-	private String validateLInput(String lname) {
-		String expression = "^([A-Z]{1}[A-Za-z]{2,})$"; // Pattern for Names
-		Pattern pattern = Pattern.compile(expression);
-		Matcher match = pattern.matcher(lname);
-		if(match.find()) {
-			return "valid";
+	public boolean matchingWithPattern(String check, String regex) {
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(check);
+		if (matcher.find()) {
+			return true;
 		}
-		return "invalid";
+		return false;
 	}
-	private String validateEmail(String Email) {
-		String expression = "^[a-zA-Z0-9_]+[-+.]?[A-Za-z0-9_]+@[A-Za-z0-9]+[.][a-z]{2,}[.]?([a-z]{2,})?$"; // Pattern for Email
-		Pattern pattern = Pattern.compile(expression);
-		Matcher match = pattern.matcher(Email);
-		if(match.find()) {
-			return "valid";
-		}
-		return "invalid";
-	}	
-	private String validateNumber(String number) {
-		String expression = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[$#@!%_&])[A-Za-z0-9$#@!%_&]{8,}$";	// Pattern for Number
-		Pattern pattern = Pattern.compile(expression);
-		Matcher match = pattern.matcher(number);
-		if(match.find()) {
-			return "valid";
-		}
-		return "invalid";
-		
-	}
-
-	private String validatePassword(String pass) {
-		String expression = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[$#@!%_&])[A-Za-z0-9$#@!%_&]{8,}$";	//Pattern for Password
-		Pattern pattern = Pattern.compile(expression);
-		Matcher match = pattern.matcher(pass);
-		if(match.find()) {
-			return "valid";
-		}
-		return "invalid";
-	
 }
