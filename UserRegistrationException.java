@@ -3,8 +3,7 @@ public class UserRegistrationException extends Exception {
 		invalidFirstName,invalidLastName,invalidEmail,invalidMobileNumber,invalidPassword;
 	}
 	public invalidInputs type;
-	public UserRegistrationException(invalidInputs type, String message) {
+	public UserRegistrationException(String message) {
 		super(message);
-		this.type = type;
 	}
 }
